@@ -3,8 +3,8 @@
 - in main function (int main()) locate and edit **threads** & **size** variables
 
 # Executing the file
-- OpenMP: **gcc -fopenmp -o omp_palindrome openMp.c
-- Run OpenMP: **./omp_palindrome
+- OpenMP: gcc -fopenmp -o omp_palindrome openMp.c
+- Run OpenMP: ./omp_palindrome
 
 # MPI
 - To set __palindrome size__ to search for, in main function, locate and set the variable __palindrome_size

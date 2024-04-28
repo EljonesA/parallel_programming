@@ -1,1 +1,0 @@
-- OpenMp & MPI
