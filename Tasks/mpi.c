@@ -36,7 +36,16 @@ int searchPalindromes(char a[ROWS][COLUMNS], int n, int start_row, int end_row)
 			buffer[n] = '\0';
 			if (isPalindrome(buffer, n)) count++;
 
-			// Vertical and diagonal searches are omitted for simplicity
+			// Vertical (top-down)
+			for (int k = 0; k < n; k++) buffer[k] = a[j+k][i];
+			if (isPalindrome(buffer, n)) count++;
+
+			// diagonal (top-left to bottom-right)
+			if (i <= ROWS - n && j <= COLUMNS - n)
+			{
+				for (int k = 0; k < n; k++) buffer[k] = a[i+k][j+k];
+				if (isPalindrome(buffer, n)) count++;
+			}
 		}
 	}
 	return count;

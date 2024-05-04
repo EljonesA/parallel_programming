@@ -11,5 +11,5 @@
 - The number of processes is set in command line, check **Run OpenMP** command.
 
 # Executing the file
-- MPI: mpicc -o mpi_palindrome palindrome_mpi.c
+- MPI: mpicc -o mpi_palindrome mpi.c
 - Run MPI: mpirun -np 2 ./mpi_palindrome       -> The 2 is the number of processes here
