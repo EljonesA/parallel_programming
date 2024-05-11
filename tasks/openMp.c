@@ -59,11 +59,14 @@ int main()
 	generateMatrix(matrix);
 
 	int threads = 5;
-	int size = 4;
-	double start = omp_get_wtime();
-	int count3 = searchPalindromes(matrix, size, threads);
-	double end = omp_get_wtime();
-	printf("%d palindromes of size %d found in %f s. using %d threads.\n", count3, size, end - start, threads);
+	//int size = 4;
+	for (int size = 3; size <=6; size++)
+	{
+		double start = omp_get_wtime();
+		int count3 = searchPalindromes(matrix, size, threads);
+		double end = omp_get_wtime();
+		printf("%d palindromes of size %d found in %f s. using %d threads.\n", count3, size, end - start, threads);
+	}
 
 	return 0;
 }

@@ -73,15 +73,17 @@ int main(int argc, char** argv)
 	int start_row = rank * rows_per_process;
 	int end_row = (rank + 1) * rows_per_process;
 	
-	double start = MPI_Wtime();
-	int palindrome_size = 4;
-	int local_count = searchPalindromes(matrix, palindrome_size, start_row, end_row);
-	int total_count;
-	MPI_Reduce(&local_count, &total_count, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-	double end = MPI_Wtime();
-
-	if (rank == 0) {
-		printf("%d palindromes of size %d found in %f s. using %d processes.\n", total_count, palindrome_size, end - start, size);
+	for (int palindrome_size = 3; palindrome_size <= 6; palindrome_size++)
+	{
+		double start = MPI_Wtime();
+		int local_count = searchPalindromes(matrix, palindrome_size, start_row, end_row);
+		int total_count;
+		MPI_Reduce(&local_count, &total_count, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+		double end = MPI_Wtime();
+	
+		if (rank == 0) {
+			printf("%d palindromes of size %d found in %f s. using %d threads.\n", total_count, palindrome_size, end - start, size);
+		}
 	}
 
 	MPI_Finalize();
